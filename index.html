@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Database</title>
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+
+<body>
+    <div class="container">
+
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4">Kickass, Inc. </h1>
+                <h1>Employee Data Management</h1>
+                <p class="lead">A Comprehensive Directory of Employee Billable Hours</p>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <h1> Current Employees</h1>
+                    <th scope="col" id="name">Employee Name</th>
+                    <th scope="col" id="role">Role</th>
+                    <th scope="col" id="start-date">Start Date</th>
+                    <th scope="col" id="months-rate">Monthly Rate</th>
+                    <th scope="col" id="months-worked">Months Worked</th>
+                    <th scope="col" id="total-billed">Total Billed ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table><br>
+
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Name</label>
+                <input type="name" class="form-control" id="name-input" placeholder="Name">
+
+                <label for="exampleFormControlInput1">Role</label>
+                <input type="name" class="form-control" id="role-input" placeholder="Role">
+            </div>
+            <label for="exampleFormControlInput1">Start Date</label>
+            <input type="date" class="form-control" id="start-input" placeholder="mm/dd/yyyy">
+
+
+            <label for="exampleFormControlInput1">Monthly Rate</label>
+            <input type="number" class="form-control" id="rate-input" placeholder="$">
+
+            <br>
+            <button id="submit-button" class="btn btn-primary" type="submit">Submit form</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
