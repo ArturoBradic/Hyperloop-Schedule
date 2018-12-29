@@ -3,26 +3,97 @@ $(document).ready(function () {
 
     // Firebase 
     var config = {
-        apiKey: "AIzaSyDzGzchKOhvrUGs-l5vtvR7nHIbQJ6XSUg",
-        authDomain: "employee-database-463d3.firebaseapp.com",
-        databaseURL: "https://employee-database-463d3.firebaseio.com",
-        projectId: "employee-database-463d3",
+        apiKey: "AIzaSyB8F-_8bWGkvF2ChjENcqsQj9cO-dM2ozQ",
+        authDomain: "hyperloop-schedule.firebaseapp.com",
+        databaseURL: "https://hyperloop-schedule.firebaseio.com",
+        projectId: "hyperloop-schedule",
         storageBucket: "",
-        messagingSenderId: "1052391213244"
+        messagingSenderId: "974143213357"
     };
 
     firebase.initializeApp(config);
     var database = firebase.database();
 
     var name = "";
-    var role = "";
-    var start = "";
-    var monthlyRate = "";
+    var destination = "";
+    var frequency = "";
+    var nextArrival = "";
 
     var name = $("#name-input").val().trim();
-    var role = $("#role-input").val().trim();
-    var start = $("#start-input").val().trim();
-    var monthlyRate = $("#rate-input").val().trim();
+    var destination = $("#destination-input").val().trim();
+    var frequency = $("#frequency-input").val().trim();
+    var nextArrival = $("#firstFreightTime-input").val().trim();
+
+    var initialName = "test";
+
+
+    //Get snapshot of initial data at initial load
+    //First time page loads, or anything changes, this code will run
+
+    // database.ref().on("value", function(snapshot){
+    //     console.log(snapshot.val());
+
+    //     //change the HTML to reflect initial value
+
+    //     $("#name-input").text(initialName);
+
+    // })
+
+    function fetch(cb) {
+        var trainData = database.ref();
+        return trainData.once("value").then(function (snapshot) {
+            cb(snapshot);
+        })
+    }
+
+
+
+    fetch(function (data) {
+        var newRow = $("<tr>").append(
+            $("<td class = 'name-div'>").text(nameData),
+            $("<td class = 'destination-div'>").text(destinationData),
+            $("<td class = 'frequency-div'>").text(frequencyData),
+            $("<td class = 'nextArrival-div'>").text(nextArrivalData))
+
+        var trainData = (data.val());
+        var keys = Object.keys(trainData);
+        console.log(keys);
+
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            var destinationData = trainData[k].destination;
+            var frequencyData = trainData[k].frequency;
+            var nameData = trainData[k].name;
+            var nextArrivalData = trainData[k].nextArrival;
+            console.log(destinationData, frequencyData, nameData, nextArrivalData);
+
+            var newRow = $("<tr>").append(
+                $("<td class = 'name-div'>").text(nameData),
+                $("<td class = 'destination-div'>").text(destinationData),
+                $("<td class = 'frequency-div'>").text(frequencyData),
+                $("<td class = 'nextArrival-div'>").text(nextArrivalData),
+    
+            )
+            $(".table > tbody").append(newRow);
+
+
+        }
+
+        // var ref = database.ref('destination');
+        // ref.on('value', gotData, errData);
+
+        // function gotData(data) {
+        //     console.log(data.val());
+        // }
+
+        // function errData(err) {
+        //     console.log('Error!');
+        //     console.log(err);
+        // }
+    });
+
+
+
 
 
     //Onclick Function
@@ -31,36 +102,30 @@ $(document).ready(function () {
         event.preventDefault();
 
         name = $("#name-input").val().trim();
-        role = $("#role-input").val().trim();
-        start = $("#start-input").val().trim();
-        monthlyRate = $("#rate-input").val().trim();
+        destination = $("#destination-input").val().trim();
+        frequency = $("#frequency-input").val().trim();
+        nextArrival = $("#firstFreightTime-input").val().trim();
 
         var newRow = $("<tr>").append(
             $("<td class = 'name-div'>").text(name),
-            $("<td class = 'role-div'>").text(role),
-            $("<td class = 'start-div'>").text(start),
-            $("<td class = 'rate-div'>").text(monthlyRate),
+            $("<td class = 'destination-div'>").text(destination),
+            $("<td class = 'frequency-div'>").text(frequency),
+            $("<td class = 'nextArrival-div'>").text(nextArrival),
 
         )
-        console.log(name, role, start, monthlyRate);
+        console.log(name, destination, frequency, nextArrival);
 
         database.ref().push({
             name: name,
-            role: role,
-            start: start,
-            monthlyRate: monthlyRate,
+            destination: destination,
+            frequency: frequency,
+            nextArrival: nextArrival,
         })
 
         //Appending newRow to the table under the tbody as <tr>, including the <td>
         $(".table > tbody").append(newRow);
 
 
-        localStorage.clear();
-
-      localStorage.setItem("name", name);
-      localStorage.setItem("role", role);
-      localStorage.setItem("start", start);
-      localStorage.setItem("monthly rate", monthlyRate);
 
     })
 

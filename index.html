@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Employee Database</title>
+    <title>Hyperloop Schedule</title>
 
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
@@ -34,22 +34,22 @@
 
         <div class="jumbotron">
             <div class="container">
-                <h1 class="display-4">Kickass, Inc. </h1>
-                <h1>Employee Data Management</h1>
-                <p class="lead">A Comprehensive Directory of Employee Billable Hours</p>
+                <h1 class="display-4">Hyperloop</h1>
+                <h1>Freight Schedule</h1>
+                <p class="lead">Hyperloop Transportation Technologies</p>
             </div>
         </div>
 
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <h1> Current Employees</h1>
-                    <th scope="col" id="name">Employee Name</th>
-                    <th scope="col" id="role">Role</th>
-                    <th scope="col" id="start-date">Start Date</th>
-                    <th scope="col" id="months-rate">Monthly Rate</th>
-                    <th scope="col" id="months-worked">Months Worked</th>
-                    <th scope="col" id="total-billed">Total Billed ($)</th>
+                    <h1>Schedule</h1>
+                    <th scope="col" id="name">Freight Name</th>
+                    <th scope="col" id="destination">Destination</th>
+                    <th scope="col" id="frequency">Frequency (min)</th>
+                    <th scope="col" id="arrival">Next Arrival</th>
+                    <th scope="col" id="minutesUntilArrival">Minutes until Arrival</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -59,18 +59,19 @@
 
         <form>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Name</label>
+                <label for="exampleFormControlInput1">Freight Name</label>
                 <input type="name" class="form-control" id="name-input" placeholder="Name">
 
-                <label for="exampleFormControlInput1">Role</label>
-                <input type="name" class="form-control" id="role-input" placeholder="Role">
+                <label for="exampleFormControlInput1">Destination</label>
+                <input type="name" class="form-control" id="destination-input" placeholder="Phoenix, AZ">
             </div>
-            <label for="exampleFormControlInput1">Start Date</label>
-            <input type="date" class="form-control" id="start-input" placeholder="mm/dd/yyyy">
+            <label for="exampleFormControlInput1">Frequency</label>
+            <input type="number" class="form-control" id="frequency-input" placeholder="(min)">
+
+            <label for="exampleFormControlInput1">First Freight Time</label>
+            <input type="name" class="form-control" id="firstFreightTime-input" placeholder="HH:mm (military time)">
 
 
-            <label for="exampleFormControlInput1">Monthly Rate</label>
-            <input type="number" class="form-control" id="rate-input" placeholder="$">
 
             <br>
             <button id="submit-button" class="btn btn-primary" type="submit">Submit form</button>
